@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row">
+        <div class="jumbotron col-12">
+            <h1 class="display-4">{{info.name}}</h1>
+            <img style="float: right; width: 100%; height: auto"  class="col-md-3" src="/emblems/Emblem_silver.png">
+            <span class="lead font-weight-bold">Level: </span><span class="lead">{{info.level}}</span>
+            <hr>
+            <span class="lead font-weight-bold">Rank: </span><span class="lead">{{info.rankedStats.tier}} {{info.rankedStats.rank}}</span>
+            <hr>
+            <span class="lead font-weight-bold">League Points: </span><span class="lead">{{info.rankedStats.leaguePoints}}</span>
+            <hr>
+            <span class="lead font-weight-bold">Win/Loss: </span><span class="lead">{{info.rankedStats.wins}}/{{info.rankedStats.losses}} ({{info.rankedStats.wr}}%)</span>
+            <hr>
+            <span class="lead font-weight-bold">Rank: </span><span class="lead">{{info.rankedStats.tier}} {{info.rankedStats.rank}}</span>
+            <hr>
+            <h3 class="display-5">Hardstuck?</h3>
+            {{#if info.rankedStats.wrHardstuck}}
+                <p class="lead">Negative win rate. Yikes, you might be worse than hardstuck.</p>
+                {{else}}
+                <p class="lead">You're doing fine, keep it up.</p>
+            {{/if}}
+            {{#if info.rankedStats.veteran}}
+                <p class="lead">Apply for veteran's discount, you're stuck in this division. Hard.</p>
+                {{else}}
+                    <p class="lead">You're new here. Keep up the good work, you're not that hardstuck!</p>
+            {{/if}}
+            {{#if info.rankedStats.inactive}}
+                <p class="lead">You're not getting a lot of games in too.</p>
+                {{else}}
+                    <p class="lead">You're getting games in too. Take a break, rewatch VODs, and try again later for better results.</p>
+            {{/if}}
+            {{#if info.rankedStats.hotStreak}}
+                You're on a hot streak, keep it up!
+                {{else}}
+                    <p class="lead">You're not on a hot streak, unfortunately. Coinflipping only goes so far. Work harder.</p>
+            {{/if}}
+          
+            
+
+            <hr class="my-4">
+            <p>Want a personalized, concise raw JSON of your stats?</p>
+            
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Currently WIP.</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+<div class
+<figure>
+		<div class="fixed-wrap">
+			<div id="fixed">
+				
+			</div>
+		</div>
+</figure>
+
+<div class="container-fluid">
+    <div class="row">
+        <ul class="text-center col-md-3 col-xs-12">
+            {{#each info2}}
+                <li class="list-group-item lead"><img src ="{{this.champIcon}}" style="width: 48px"> 
+                <div class="lead font-weight-bold">{{this.champName}}: </div>
+                <div class="lead font-weight-bold">Mastery Points: </span><span class="lead">{{this.mastPoint}}</div>
+                {{#if this.chestBool}}
+                    <div>Chest has not been earned yet!</div>
+                    {{else}}
+                        <div>Chest has been earned already.</div>
+                {{/if}}
+                <div class="lead font-weight-bold">Last played: </span><span class="lead">{{this.lastPlayed}}</div>
+                </li>
+            {{/each}}
+        </ul>
+        <div class="col-md-9 col-xs-12 container">
+            <form action="/search/matchHistPlus" class="col-12" method="POST" style="margin-top: 20px">
+                <div class="form-group text-center">
+                    <label class="matchChamp display-4">Champ History. Pick a champion.</label>
+                    <input type="text" placeholder="Yasuo" name="matchChamp" class="form-control"><!--name attr info is sent in request, like body req in Postman-->
+                    <input type="submit" class="btn btn-primary btn-block mt-4">
+                </div>
+            </form>
+            {{#if matchData}} 
+            <div class="text-center">
+                <img src ="{{icon}}" style="width: 48px"> 
+            </div>
+            <ul class="text-center">
+                {{#each info3}}
+                    <li class="list-group-item col-12" id="games" style="margin-bottom: 20px;">
+                        <div class="lead font-weight-bold">KDA: </span><span class="lead">{{this.kills}}/{{this.deaths}}/{{this.assists}}</div>
+                        <div class="lead font-weight-bold">Highest Killing Spree: </span><span class="lead">{{this.killingSpreeMax}}</div>
+                        <div class="lead font-weight-bold">Longest Time Alive: </span><span class="lead">{{this.longestTimeSpentLiving}} min.</div>
+                        <div class="lead font-weight-bold">Total Damage to Champions: </span><span class="lead">{{this.totalDamage}}</div>
+                        <div class="lead font-weight-bold">Vision Score: </span><span class="lead">{{this.visionScore}}</div>
+                        <div class="lead font-weight-bold">Creep Score: </span><span class="lead">{{this.minionScore}}</div>
+                        <hr>
+                        <style>
+                            #games {
+                                transform: scale(1.0);
+                                transition-duration: 500ms;
+                            }
+                        </style>
+                        {{#if this.teamObj.winBool}}
+                            <div class="lead font-weight-bold">You won! Hopefully you didn't get carried!</div>
+                            {{else}}
+                                <div class="lead font-weight-bold">You lost.</div>
+                        {{/if}}
+                        {{#if this.teamObj.firstBlood}}
+                            <div class="lead">Your team proactively secured first blood!</div>
+                            {{else}}
+                                <div class="lead">Your team got first blooded.</div>
+                        {{/if}}
+                        {{#if this.teamObj.firstTower}}
+                            <div class="lead">Your team got the first tower and its gold benefits!</div>
+                            {else}}
+                                <div class="lead">You guys lost first tower. Seriously?</div>
+                        {{/if}}
+                        {{#if this.teamObj.firstDragon}}
+                            <div class="lead">Took the dragon first!</div>
+                            {{else}}
+                                <div class="lead">Got dragon taken away first.</div>
+                        {{/if}}
+                        {{#if this.teamObj.riftHeraldBool}}
+                            <div class="lead">Good work, your team took the Rift Herald!</div>
+                            {{else}}
+                                <div class="lead">Rift Herald was killed by the enemy team.</div>
+                        {{/if}}
+                        <div><span class="lead font-weight-bold">Overall...</span> <span class="lead">You guys took {{this.teamObj.towerKillsInt}} towers, {{this.teamObj.inhibKillsInt}} inhibs, {{this.teamObj.dragonKillsInt}} dragons, and {{this.teamObj.baronKillsInt}} barons.</span></div>
+                {{/each}}
+            </ul>
+
+        {{/if}}
+        </div>
+    </div>
+</div>
+
+
+
