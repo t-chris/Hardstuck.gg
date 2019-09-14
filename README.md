@@ -14,7 +14,8 @@ This will run the dev script, which has nodemon installed.
 ### What is Hardstuck.gg?
 
 Hardstuck.gg is an application based in Node.js that grabs data using the [Riot Games API](https://developer.riotgames.com/apis) and analyzes it to determine if a player is "hardstuck," aka not improving and plateauing in performance.
-
+https://github.com/t-chris/Hardstuck.gg/blob/master/hardstuck1.png
+https://github.com/t-chris/Hardstuck.gg/blob/master/hardstuck2.png
 ## Built With
 
 * Node.js
