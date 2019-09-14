@@ -1,6 +1,4 @@
-# Project Title
-
-Hardstuck.gg - Hardstuck? GG.
+# Hardstuck.gg - Hardstuck? GG.
 
 ## Getting Started
 
