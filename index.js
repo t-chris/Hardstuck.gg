@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json()); //express.json is middleware, based off of body-parser.
 app.use(express.urlencoded({extended : false}));//for url encoded post requests.
 
-var api_key = 'RGAPI-1d1504b9-eaae-46bb-a32e-ea4e45580297';
+var api_key = "YOUR_API_KEY";
 
 //Homepage
 app.get('/', (req, res) => {
