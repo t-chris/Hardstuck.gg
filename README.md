@@ -5,7 +5,6 @@ Hardstuck.gg - Hardstuck? GG.
 ## Getting Started
 
 Open source, baby.
-
 ```
 $ git clone https://github.com/t-chris/Hardstuck.gg.git
 ```
@@ -20,10 +19,13 @@ Hardstuck.gg is an application based in Node.js that grabs data using the [Riot 
 * A couple other node modules like express-handlebars and Request.js
 * Front-end Technologies - HTML/CSS/Bootstrap
 
+## Upcoming Features
+
+* Probably the release of some functional API that users can use in the form of JSON.
+* Some Clash functionality. Clash was fun.
+
 ## Authors
 Check out [my website](http://tanchris.com) if you're interested. This was a fun little project for a game I unfortunately play.
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
