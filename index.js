@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const async = require('async');
 const request = require('request');
 const champion = require('./champion.json');
-const fs = require('fs');
+
 
 //Static emblems middleware for locally stored images and css.
 app.use(express.static('emblems'));
@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json()); //express.json is middleware, based off of body-parser.
 app.use(express.urlencoded({extended : false}));//for url encoded post requests.
 
-var api_key = 'RGAPI-1d1504b9-eaae-46bb-a32e-ea4e45580297';
+var api_key = 'RGAPI-f18f3e36-a36e-4dea-b15b-7ad75cf66e41';
 
 //Homepage
 app.get('/', (req, res) => {
