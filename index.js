@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json()); //express.json is middleware, based off of body-parser.
 app.use(express.urlencoded({extended : false}));//for url encoded post requests.
 
-var api_key = 'RGAPI-f18f3e36-a36e-4dea-b15b-7ad75cf66e41';
+var api_key = 'RGAPI-ee5433fa-9283-40cf-ab65-4d6af9807daa';
 
 //Homepage
 app.get('/', (req, res) => {
@@ -60,18 +60,27 @@ app.post('/search', (req, res) => {
                 console.log(err);
             }
             else {
-                var json = JSON.parse(body);
-                const rankedStats = json[2];
-                const pngSrc = "/emblems/Emblem_" + rankedStats.tier.toLowerCase() + ".png";
-                data.rankedStats = rankedStats;
-                data.rankedStats.wr = ((rankedStats.wins/(rankedStats.wins + rankedStats.losses))*100).toFixed(1);
-                data.rankedStats.pngSrc = pngSrc;
-                if (data.rankedStats.wr < 50) {
-                    data.rankedStats.wrHardstuck = true;
-                }
-                else {
-                    data.rankedStats.wrHardstuck = false;
-                }
+                const json = JSON.parse(body);
+                json.forEach(gameMode => {
+                    if (gameMode.queueType == "RANKED_SOLO_5x5") {
+                        const rankedStats = gameMode;
+                        const pngSrc = "/emblems/Emblem_" + rankedStats.tier.toLowerCase() + ".png";
+                        console.log(pngSrc);
+                        data.rankedStats = rankedStats;
+                        data.rankedStats.wr = ((rankedStats.wins/(rankedStats.wins + rankedStats.losses))*100).toFixed(1);
+                        data.rankedStats.pngSrc = pngSrc;
+                        if (data.rankedStats.wr < 50) {
+                            data.rankedStats.wrHardstuck = true;
+                        }
+                        else {
+                            data.rankedStats.wrHardstuck = false;
+                        }
+                    }
+                    else {
+                        console.log("lol you don't play summoner's rift");
+                        
+                    }
+                })
                 
                 callback(null, data);
             }
@@ -109,6 +118,7 @@ app.post('/search', (req, res) => {
                 }
                 data2.player = data;
                 data2.champList = champList;
+                console.log(data2);
                 callback(null); 
             }
         })
@@ -206,6 +216,8 @@ app.post('/search/matchHistPlus', (req, res) => {
                                         playerStat.teamObj = teamStat;
                                     }
                                 })
+                                console.log(playerStat);
+                                console.log(playerStat.teamObj[0] + " " + playerStat.teamObj[1]);
                                 playerStats.push(playerStat);
                             }
                         })

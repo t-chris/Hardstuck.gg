@@ -2,7 +2,7 @@
     <div class="row">
         <div class="jumbotron col-12">
             <h1 class="display-4">{{info.name}}</h1>
-            <img style="float: right; width: 100%; height: auto"  class="col-md-3" src="/emblems/Emblem_silver.png">
+            <img style="float: right; width: 100%; height: auto"  class="col-md-3" src="{{info.rankedStats.pngSrc}}">
             <span class="lead font-weight-bold">Level: </span><span class="lead">{{info.level}}</span>
             <hr>
             <span class="lead font-weight-bold">Rank: </span><span class="lead">{{info.rankedStats.tier}} {{info.rankedStats.rank}}</span>
@@ -15,7 +15,7 @@
             {{#if info.rankedStats.wrHardstuck}}
                 <p class="lead">Negative win rate. Yikes, you might be worse than hardstuck.</p>
                 {{else}}
-                <p class="lead">You're doing fine, keep it up.</p>
+                <p class="lead">Positive win rate, not bad.</p>
             {{/if}}
             {{#if info.rankedStats.veteran}}
                 <p class="lead">Apply for veteran's discount, you're stuck in this division. Hard.</p>
@@ -103,17 +103,17 @@
                             {{else}}
                                 <div class="lead font-weight-bold">You lost.</div>
                         {{/if}}
-                        {{#if this.teamObj.firstBlood}}
+                        {{#if this.teamObj.firstBloodBool}}
                             <div class="lead">Your team proactively secured first blood!</div>
                             {{else}}
                                 <div class="lead">Your team got first blooded.</div>
                         {{/if}}
-                        {{#if this.teamObj.firstTower}}
+                        {{#if this.teamObj.firstTowerBool}}
                             <div class="lead">Your team got the first tower and its gold benefits!</div>
-                            {else}}
+                            {{else}}
                                 <div class="lead">You guys lost first tower. Seriously?</div>
                         {{/if}}
-                        {{#if this.teamObj.firstDragon}}
+                        {{#if this.teamObj.firstDragonBool}}
                             <div class="lead">Took the dragon first!</div>
                             {{else}}
                                 <div class="lead">Got dragon taken away first.</div>
