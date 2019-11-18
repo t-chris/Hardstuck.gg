@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json()); //express.json is middleware, based off of body-parser.
 app.use(express.urlencoded({extended : false}));//for url encoded post requests.
 
-var api_key = 'RGAPI-ee5433fa-9283-40cf-ab65-4d6af9807daa';
+var api_key = "RGAPI-c939ab5a-484b-4344-9f5f-246399c6bb88";
 
 //Homepage
 app.get('/', (req, res) => {
@@ -78,7 +78,6 @@ app.post('/search', (req, res) => {
                     }
                     else {
                         console.log("lol you don't play summoner's rift");
-                        
                     }
                 })
                 
