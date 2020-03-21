@@ -29,7 +29,7 @@ Hardstuck.gg is an application based in Node.js that grabs data using the [Riot 
 * Some Clash functionality. Clash was fun.
 
 ## Authors
-Check out [my website](http://tanchris.com) if you're interested. This was a fun little project for a game I unfortunately play.
+Check out [my website](http://soberdoer.me) if you're interested. This was a fun little project for a game I unfortunately play.
 
 ## License
 
