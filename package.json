@@ -10,7 +10,7 @@
   "author": "Chris Tan",
   "license": "ISC",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "request": "^2.88.0"
